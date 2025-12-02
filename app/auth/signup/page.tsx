@@ -21,7 +21,7 @@ const SignupPage = () => {
           error={!!state.error}
         />
         <TextField
-          name="email"
+          name="password"
           label="Password"
           variant="outlined"
           type="password"
