@@ -1,9 +1,9 @@
 "use server";
 
 import { FormError } from "@/app/common/form-error.interface";
-import API_URL from "@/app/constants/api";
-import { post } from "@/app/utils/fetch";
-import { getErrorMessage } from "@/app/utils/format-error";
+import API_URL from "@/app/common/constants/api";
+import { post } from "@/app/common/utils/fetch";
+import { getErrorMessage } from "@/app/common/utils/format-error";
 import { redirect } from "next/navigation";
 
 // export default async function createUser(_prevState: any, formData: FormData) {
