@@ -1,9 +1,7 @@
-import Image from "next/image";
+import getMe from "./get-me";
 
-export default function Home() {
-  return (
-    <>
-     
-    </>
-  );
+export default async function Home() {
+  const me = await getMe();
+
+  return <></>;
 }
