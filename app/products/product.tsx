@@ -9,8 +9,8 @@ export default function Product({ product }: ProductProps) {
   return (
     <Card className="p-4">
       <Typography variant="h4">{product.name}</Typography>
-      <Typography variant="h4">{product.description}</Typography>
-      <Typography variant="h4">{product.price}</Typography>
+      <Typography>{product.description}</Typography>
+      <Typography>${product.price}</Typography>
     </Card>
   );
 }

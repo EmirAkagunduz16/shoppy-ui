@@ -4,6 +4,7 @@ import { Box, Button, Modal, Stack, TextField } from "@mui/material";
 import { useState } from "react";
 import { FormResponse } from "../../common/form-response.interface";
 import createProduct from "../actions/create-product";
+import { CloudUpload } from "@mui/icons-material";
 
 const styles = {
   position: "absolute",
@@ -71,6 +72,13 @@ export default function CreateProductModal({
               helperText={response?.error}
               error={!!response?.error}
             />
+            <Button
+              component="label"
+              variant="outlined"
+              startIcon={<CloudUpload />}
+            >
+              
+            </Button>
             <Button type="submit" variant="contained">
               Submit
             </Button>
