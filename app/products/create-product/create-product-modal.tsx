@@ -1,7 +1,14 @@
 "use client";
 
-import { Box, Button, Modal, Stack, TextField } from "@mui/material";
-import { useState } from "react";
+import {
+  Box,
+  Button,
+  Modal,
+  Stack,
+  TextField,
+  Typography,
+} from "@mui/material";
+import { CSSProperties, useState } from "react";
 import { FormResponse } from "../../common/form-response.interface";
 import createProduct from "../actions/create-product";
 import { CloudUpload } from "@mui/icons-material";
@@ -18,6 +25,18 @@ const styles = {
   p: 4,
 };
 
+const fileInpuStyles: CSSProperties = {
+  clip: "rect(0px, 0px, 0px, 0px)",
+  clipPath: "inset(50%)",
+  height: 1,
+  overflow: "hidden",
+  position: "absolute",
+  bottom: 0,
+  left: 0,
+  whiteSpace: "nowrap",
+  width: 1,
+};
+
 interface CreateProductModalProps {
   open: boolean;
   handleClose: () => void;
@@ -28,10 +47,12 @@ export default function CreateProductModal({
   handleClose,
 }: CreateProductModalProps) {
   const [response, setResponse] = useState<FormResponse>();
+  const [fileName, setFileName] = useState("");
 
   const onClose = () => {
     setResponse(undefined);
     handleClose();
+    setFileName("");
   };
 
   return (
@@ -77,8 +98,17 @@ export default function CreateProductModal({
               variant="outlined"
               startIcon={<CloudUpload />}
             >
-              
+              Upload File
+              <input
+                type="file"
+                name="image"
+                style={fileInpuStyles}
+                onChange={(e) =>
+                  e.target.files && setFileName(e.target.files[0].name)
+                }
+              />
             </Button>
+            <Typography>{fileName}</Typography>
             <Button type="submit" variant="contained">
               Submit
             </Button>

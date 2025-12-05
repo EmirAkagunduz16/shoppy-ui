@@ -2,7 +2,7 @@ import { cookies } from "next/headers";
 import API_URL from "../constants/api";
 import { getErrorMessage } from "./format-error";
 
-const getHeaders = async () => ({
+export const getHeaders = async () => ({
   Cookie: (await cookies()).toString(),
 });
 
@@ -18,14 +18,18 @@ export const post = async (path: string, formData: FormData) => {
     return { error: getErrorMessage(parsedRes) };
   }
 
-  return { error: "" };
+  return { error: "", data: parsedRes };
 };
 
-export const get = async <T>(path: string, tags?: string[]) => {
+export const get = async <T>(path: string, tags?: string[]): Promise<T> => {
   const res = await fetch(`${API_URL}/${path}`, {
     headers: { ...(await getHeaders()) },
     next: { tags },
   });
 
-  return res.json() as T;
+  if (!res.ok) {
+    throw new Error(`Request failed: ${res.status} ${res.statusText}`);
+  }
+
+  return res.json() as Promise<T>;
 };
