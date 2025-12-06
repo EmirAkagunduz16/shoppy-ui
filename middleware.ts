@@ -1,5 +1,5 @@
 import { NextRequest } from "next/server";
-import authenticated from "./app/auth/authenticated";
+import authenticated from "./app/auth/actions/authenticated";
 import { unAuthenticatedRoutes } from "./app/common/constants/routes";
 
 export function middleware(request: NextRequest) {
