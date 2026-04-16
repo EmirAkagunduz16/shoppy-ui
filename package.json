@@ -18,7 +18,7 @@
     "@mui/material-nextjs": "^7.3.5",
     "@stripe/stripe-js": "^8.5.3",
     "jwt-decode": "^4.0.0",
-    "next": "16.0.6",
+    "next": "16.2.4",
     "react": "19.2.0",
     "react-dom": "19.2.0",
     "socket.io-client": "^4.8.1"
