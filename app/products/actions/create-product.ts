@@ -1,6 +1,6 @@
 "use server";
 
-import { revalidateTag } from "next/cache";
+import { updateTag } from "next/cache";
 import { getHeaders, post } from "../../common/utils/fetch";
 import API_URL from "@/app/common/constants/api";
 
@@ -10,7 +10,7 @@ export default async function createProduct(formData: FormData) {
   if (productImage instanceof File && !response.error) {
     await uploadProductImage(response.data.id, productImage);
   }
-  revalidateTag("products");
+  updateTag("products");
   return response;
 }
 
